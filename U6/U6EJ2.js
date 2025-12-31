@@ -24,6 +24,27 @@
 const myJSON= '[{"brand":"Ford","model":"Mustang Boss 429","displacement":7000,"horsePower":375,"year":1969},{"brand":"BMW","model":"520d","displacement":1980,"horsePower":136,"year":2002},{"brand":"Mercedes-Benz","model":"280 SLC","displacement":2746,"horsePower":136,"year":1979}]';
 
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
+class Car {
+  constructor(brand, model, displacement, horsePower, year) {
+    this.brand = brand;
+    this.model = model;
+    this.displacement = displacement;
+    this.horsePower = horsePower;
+    this.year = year;
+  }
+
+  get age() {
+    return 2023 - this.year;
+  }
+}
+
+const myCarsArray = JSON.parse(myJSON);
+
+const myCars = myCarsArray.map(c => new Car(c.brand, c.model, c.displacement, c.horsePower, c.year));
+
+const lessThan25 = myCars.filter(car => car.age < 25);
+
+const newCarsJSON = JSON.stringify(lessThan25);
 
 
 

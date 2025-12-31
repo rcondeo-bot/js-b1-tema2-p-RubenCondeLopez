@@ -32,6 +32,26 @@ class Car {
 */
 
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
+class Car {
+  constructor(brand, model, displacement, horsePower, year) {
+    this.brand = brand;
+    this.model = model;
+    this.displacement = displacement;
+    this.horsePower = horsePower;
+    this.year = year;
+  }
+
+  // Setter que calcula el año a partir de la antigüedad
+  set carAntiguaty(antiguedad) {
+    this.year = 2023 - antiguedad;
+  }
+
+  get getCarDescription() {
+    return `${this.brand} ${this.model} ${this.displacement}cc`;
+  }
+}
+
+
 
 
 

@@ -38,6 +38,62 @@
 	Finalment, crea almenys 3 objectes de la classe Triangle i fes 3 trucades a aquests nous mètodes.
 */
 //Escribe aquí tu solución / escriviu aquí la vostra solució:
+class Triangle {
+  constructor(base, height, rightTriangle = false) {
+    this.base = base;
+    this.height = height;
+    this.rightTriangle = rightTriangle;
+  }
+  
+  // Área de un triángulo
+  get areaTriangle() {
+    return (this.base * this.height) / 2;
+  }
+
+  // Hipotenusa si es triángulo rectángulo
+  get rightHypotenuse() {
+    if (this.rightTriangle) {
+      return Math.sqrt(this.base ** 2 + this.height ** 2);
+    }
+    return undefined;
+  }
+
+  // Perímetro si es triángulo rectángulo
+  get rightPerimeter() {
+    if (this.rightTriangle) {
+      return this.base + this.height + this.rightHypotenuse;
+    }
+    return undefined;
+  }
+
+  // Determina si es equilátero
+  isEquilateral() {
+    return this.height === (this.base * Math.sqrt(3)) / 2;
+  }
+
+  // Perímetro exterior de dos triángulos rectángulos unidos
+  static rightTriangleUnion(tr1, tr2) {
+    if (tr1.rightTriangle && tr2.rightTriangle) {
+      return tr1.rightPerimeter + tr2.rightPerimeter + Math.abs(tr1.height - tr2.height);
+    }
+    return undefined;
+  }
+
+  // Área de un polígono formado por varios triángulos
+  static areaPoligon(trianglesArray) {
+    return trianglesArray.reduce((sum, tri) => sum + tri.areaTriangle, 0);
+  }
+}
+
+// Ejemplo de uso
+const t1 = new Triangle(3, 4, true);
+const t2 = new Triangle(6, 8, true);
+const t3 = new Triangle(10, 10 * Math.sqrt(3) / 2, false);
+
+// Llamadas a los métodos
+const unionPerimeter = Triangle.rightTriangleUnion(t1, t2);
+const polygonArea = Triangle.areaPoligon([t1, t2, t3]);
+const isEquilateralT3 = t3.isEquilateral();
 
 
 
